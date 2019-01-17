@@ -1,4 +1,4 @@
-# devopedia_R4DS_workshop
+# Devopedia R4DS workshop
 
 ## Instructions
 
