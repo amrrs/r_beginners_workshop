@@ -5,6 +5,7 @@ author: "AbdulMajedRaja RS"
 date: "2019/01/19 "
 output:
   xaringan::moon_reader:
+    chakra: libs/remark-latest.min.js 
     lib_dir: libs
     nature:
       highlightStyle: github
