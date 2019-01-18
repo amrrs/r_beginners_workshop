@@ -225,7 +225,291 @@ a
 
 ---
 
+
+
+# Objects
+
+* The entities R operates on are technically known as `objects`.
+
+Example: Vector of numeric
+
+
+
+```r
+vector_of_numeric &lt;- c(2,4,5)
+
+typeof(vector_of_numeric)
+```
+
+```
+## [1] "double"
+```
+
+---
+
+# Vectors
+
+- Atomic Vectors - Homogeneous Data Type
+
+  - logical
+  - integer
+  - double
+  - character
+  - *complex*
+  - *raw*
+
+- Lists - (Recursive Vectors) Heterogeneous Data Type 
+
+- `NULL` is used to represent absence of a vector
+
+**Vectors + Attributes (Additional Meta Data) = Augmented vectors**
+
+* Factors are built on top of integer vectors.
+* Dates and date-times are built on top of numeric vectors.
+* Data frames and tibbles are built on top of lists.
+
+
+---
+
+### Numeric Vector
+
+
+```r
+nummy &lt;- c(1,2,3) 
+
+nummy_int &lt;- c(1L,2L,3L)  
+```
+
+
+
+```r
+typeof(nummy)
+```
+
+```
+## [1] "double"
+```
+
+```r
+typeof(nummy_int)
+```
+
+```
+## [1] "integer"
+```
+
+
+```r
+is.numeric(nummy)
+```
+
+```
+## [1] TRUE
+```
+
+
+---
+
+### Character Vector
+
+
+```r
+types &lt;- c("int","double","character")
+
+types
+```
+
+```
+## [1] "int"       "double"    "character"
+```
+
+
+
+```r
+typeof(types)
+```
+
+```
+## [1] "character"
+```
+
+```r
+length(types)
+```
+
+```
+## [1] 3
+```
+
+
+```r
+is.numeric(types)
+```
+
+```
+## [1] FALSE
+```
+
+```r
+is.character(types)
+```
+
+```
+## [1] TRUE
+```
+---
+
+### Logical Vector
+
+
+```r
+logicals &lt;- c(TRUE,F,TRUE,T, FALSE)
+
+logicals
+```
+
+```
+## [1]  TRUE FALSE  TRUE  TRUE FALSE
+```
+---
+
+# Coersion 
+
+## Typecasting - Explicit
+
+
+
+```r
+money_in_chars &lt;- c("20","35","33")
+
+typeof(money_in_chars)
+```
+
+```
+## [1] "character"
+```
+
+
+```r
+money_money &lt;- as.numeric(money_in_chars)
+
+money_money
+```
+
+```
+## [1] 20 35 33
+```
+
+```r
+typeof(money_money)
+```
+
+```
+## [1] "double"
+```
+
+---
+
+## Typecasting - Implicit
+
+
+```r
+money_money &lt;- as.numeric(money_in_chars)
+
+money_money
+```
+
+```
+## [1] 20 35 33
+```
+
+```r
+typeof(money_money)
+```
+
+```
+## [1] "double"
+```
+
+
+```r
+new_money &lt;- c(money_money,"33")
+
+new_money
+```
+
+```
+## [1] "20" "35" "33" "33"
+```
+
+```r
+typeof(new_money)
+```
+
+```
+## [1] "character"
+```
+---
+--- 
+# Vector Manipulation
+
+## Appending
+
+
+```r
+days &lt;- c("Mon","Tue","Wed")
+
+days
+```
+
+```
+## [1] "Mon" "Tue" "Wed"
+```
+
+
+```r
+week_end &lt;- c("Sat","Sun")
+
+more_days &lt;- c(days,"Thu","Fri",week_end)
+
+more_days
+```
+
+```
+## [1] "Mon" "Tue" "Wed" "Thu" "Fri" "Sat" "Sun"
+```
+
+---
+
+# Vector - Arithmetic
+
+
+```r
+set.seed(122)
+
+so_many_numbers &lt;- runif(10, min = 10, max = 100)
+
+so_many_numbers
+```
+
+```
+##  [1] 91.45185 91.61657 27.14995 13.68211 62.11661 66.31451 71.14383
+##  [8] 10.25104 13.21914 63.69918
+```
+
+
+```r
+so_many_numbers * 200
+```
+
+```
+##  [1] 18290.370 18323.314  5429.989  2736.422 12423.322 13262.902 14228.767
+##  [8]  2050.209  2643.828 12739.836
+```
+
+---
 # Factors
+
 * In R, factors are used to work with categorical variables, variables that have a fixed and known set of possible values.
 
 * Useful with Characters where non-Alphabetical Ordering is required
@@ -336,18 +620,19 @@ example("for")
 ## for+    x &lt;- stats::rnorm(n)
 ## for+    cat(n, ": ", sum(x^2), "\n", sep = "")
 ## for+ }
-## 2: 0.5839151
-## 5: 7.931336
-## 10: 4.087977
-## 20: 46.47196
-## 50: 66.42267
+## 2: 2.188171
+## 5: 1.936692
+## 10: 15.34038
+## 20: 25.59841
+## 50: 49.75875
 ## 
 ## for&gt; f &lt;- factor(sample(letters[1:5], 10, replace = TRUE))
 ## 
 ## for&gt; for(i in unique(f)) print(i)
-## [1] "a"
-## [1] "b"
 ## [1] "c"
+## [1] "a"
+## [1] "d"
+## [1] "b"
 ## [1] "e"
 ```
 
@@ -1309,13 +1594,13 @@ kaggle %&gt;%
 
 # Top 5 Countries - Plot #2
 
-![](presentation_files/figure-html/unnamed-chunk-36-1.png)&lt;!-- --&gt;
+![](presentation_files/figure-html/countries2 -1.png)&lt;!-- --&gt;
 
 ---
 
 # Top 5 Countries - Plot #3 Themed
 
-![](presentation_files/figure-html/unnamed-chunk-37-1.png)&lt;!-- --&gt;
+![](presentation_files/figure-html/countries3 -1.png)&lt;!-- --&gt;
 
 
 ---

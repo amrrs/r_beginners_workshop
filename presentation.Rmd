@@ -182,7 +182,185 @@ a
 
 ---
 
+
+
+# Objects
+
+* The entities R operates on are technically known as `objects`.
+
+Example: Vector of numeric
+
+
+```{r}
+vector_of_numeric <- c(2,4,5)
+
+typeof(vector_of_numeric)
+```
+
+---
+
+# Vectors
+
+- Atomic Vectors - Homogeneous Data Type
+
+  - logical
+  - integer
+  - double
+  - character
+  - *complex*
+  - *raw*
+
+- Lists - (Recursive Vectors) Heterogeneous Data Type 
+
+- `NULL` is used to represent absence of a vector
+
+**Vectors + Attributes (Additional Meta Data) = Augmented vectors**
+
+* Factors are built on top of integer vectors.
+* Dates and date-times are built on top of numeric vectors.
+* Data frames and tibbles are built on top of lists.
+
+
+---
+
+### Numeric Vector
+
+```{r}
+nummy <- c(1,2,3) 
+
+nummy_int <- c(1L,2L,3L)  
+```
+
+
+```{r}
+typeof(nummy)
+
+typeof(nummy_int)
+```
+
+```{r}
+is.numeric(nummy)
+```
+
+
+---
+
+### Character Vector
+
+```{r}
+
+types <- c("int","double","character")
+
+types
+```
+
+
+```{r}
+typeof(types)
+
+length(types)
+
+```
+
+```{r}
+is.numeric(types)
+is.character(types)
+```
+---
+
+### Logical Vector
+
+```{r}
+
+logicals <- c(TRUE,F,TRUE,T, FALSE)
+
+logicals
+```
+---
+
+# Coersion 
+
+## Typecasting - Explicit
+
+
+```{r}
+
+money_in_chars <- c("20","35","33")
+
+typeof(money_in_chars)
+
+```
+
+```{r}
+money_money <- as.numeric(money_in_chars)
+
+money_money
+
+typeof(money_money)
+```
+
+---
+
+## Typecasting - Implicit
+
+```{r}
+money_money <- as.numeric(money_in_chars)
+
+money_money
+
+typeof(money_money)
+
+```
+
+```{r}
+
+new_money <- c(money_money,"33")
+
+new_money
+
+typeof(new_money)
+
+```
+---
+--- 
+# Vector Manipulation
+
+## Appending
+
+```{r}
+days <- c("Mon","Tue","Wed")
+
+days
+```
+
+```{r}
+week_end <- c("Sat","Sun")
+
+more_days <- c(days,"Thu","Fri",week_end)
+
+more_days
+```
+
+---
+
+# Vector - Arithmetic
+
+```{r}
+
+set.seed(122)
+
+so_many_numbers <- runif(10, min = 10, max = 100)
+
+so_many_numbers
+```
+
+```{r}
+so_many_numbers * 200
+```
+
+---
 # Factors
+
 * In R, factors are used to work with categorical variables, variables that have a fixed and known set of possible values.
 
 * Useful with Characters where non-Alphabetical Ordering is required
@@ -579,7 +757,7 @@ class: inverse,center,middle
 
 # Top 5 Countries - Plot #1
 
-```{r eval = FALSE}
+```{r countries1 ,eval = FALSE}
 kaggle %>% 
   filter(!`In which country do you currently reside?` %in% "Other") %>% 
   count(`In which country do you currently reside?`) %>% 
@@ -600,7 +778,7 @@ kaggle %>%
 
 # Top 5 Countries - Plot #2
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r countries2 ,echo=FALSE, message=FALSE, warning=FALSE}
 kaggle %>% 
   filter(!`In which country do you currently reside?` %in% "Other") %>% 
   count(`In which country do you currently reside?`) %>% 
@@ -621,7 +799,7 @@ kaggle %>%
 
 # Top 5 Countries - Plot #3 Themed
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width= 10}
+```{r countries3 ,echo=FALSE, message=FALSE, warning=FALSE, fig.width= 10}
 library(ggthemes)
 
 kaggle %>% 
