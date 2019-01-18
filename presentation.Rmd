@@ -79,7 +79,7 @@ class: inverse, center, middle
 
 # R Ecosystem
 
-Like `Python`, `R`'s strength lies in its Ecosystem. Why R? It's primarily - R's packages.
+Like `Python`, `R`'s strength lies in its Ecosystem. **Why R?** - R Packages
 
 
 ### Growth
@@ -96,37 +96,26 @@ Like `Python`, `R`'s strength lies in its Ecosystem. Why R? It's primarily - R's
 ---
 class: inverse, center, middle
 
-# Get Started
+# Basics of R Programming
 
 ---
 
-# Hello World
+# Hello, World!
 
-Install the **xaringan** package from [Github](https://github.com/yihui/xaringan):
 
-```{r eval=FALSE, tidy=FALSE}
-devtools::install_github("yihui/xaringan")
+The traditional first step - **Hello, World!**:
+
+--
+
+```{r eval=TRUE, tidy=FALSE}
+print("Hello, World!")
 ```
 
---
+<br/>
 
-You are recommended to use the [RStudio IDE](https://www.rstudio.com/products/rstudio/), but you do not have to.
+###.center[That's one small step for a man, one giant leap for mankind]
+###.center[Neil Armstrong]
 
-- Create a new R Markdown document from the menu `File -> New File -> R Markdown -> From Template -> Ninja Presentation`;<sup>1</sup>
-
---
-
-- Click the `Knit` button to compile it;
-
---
-
-- or use the [RStudio Addin](https://rstudio.github.io/rstudioaddins/)<sup>2</sup> "Infinite Moon Reader" to live preview the slides (every time you update and save the Rmd document, the slides will be automatically reloaded in RStudio Viewer.
-
-.footnote[
-[1] 中文用户请看[这份教程](http://slides.yihui.name/xaringan/zh-CN.html)
-
-[2] See [#2](https://github.com/yihui/xaringan/issues/2) if you do not see the template or addin in RStudio.
-]
 
 ---
 background-image: url(`r xaringan:::karl`)
