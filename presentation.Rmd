@@ -17,18 +17,56 @@ output:
 options(htmltools.dir.version = FALSE)
 ```
 
-background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
+# About Me
 
-???
+- Studied at **Government College of Technology, Coimbatore**
 
-Image credit: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sharingan_triple.svg)
+- Bengaluru R user group **Organizer**
+
+- R Packages Developer ( `coinmarketcapr`, `itunesr`)
+
+
+.center[![Right-aligned image](https://images-na.ssl-images-amazon.com/images/G/01/img15/pet-products/small-tiles/23695_pets_vertical_store_dogs_small_tile_8._CB312176604_.jpg)]
 
 ---
-class: center, middle
+class: inverse, center, middle
 
-# xaringan
+# About R
 
-### /ʃæ.'riŋ.ɡæn/
+---
+
+# About R
+
+
+- R is a language and environment for statistical computing and graphics. (Ref: [`r-project.org`](https://www.r-project.org/about.html))
+
+- R is Free
+
+- R can be extended (easily) via *packages*.
+
+.right[![image](images/Rlogo.png)]
+
+
+---
+class: inverse, center, middle
+
+# About RStudio
+
+---
+
+# About RStudio
+
+
+- RStudio is a **free and open-source IDE** for R, released by the company **RStudio, Inc.** 
+
+- RStudio and its team regularly contribute to R community by releasing new packages, such as:
+  - `tidyverse`
+  - `shiny`
+  - `knitr`
+
+
+.right[<img src="images/RStudio.png" width="40%">]
+
 
 ---
 class: inverse, center, middle
