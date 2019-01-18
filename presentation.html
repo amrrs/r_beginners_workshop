@@ -44,8 +44,17 @@ class: inverse
 - Thus, get you ready to embark on your own journey to become a Data Scientist who uses R
 
 
+---
+
+# Content:
+
+This presentation's content is heavily borrowed from the book [**R for Data Science**](https://r4ds.had.co.nz) by **Garrett Grolemund** and **Hadley Wickham**
+
+
+.center[&lt;img src="images/r4ds_had_cover.png" width="30%"&gt;]
 
 ---
+
 
 # About R
 
@@ -217,7 +226,6 @@ a
 ---
 
 # Factors
-
 * In R, factors are used to work with categorical variables, variables that have a fixed and known set of possible values.
 
 * Useful with Characters where non-Alphabetical Ordering is required
@@ -328,20 +336,19 @@ example("for")
 ## for+    x &lt;- stats::rnorm(n)
 ## for+    cat(n, ": ", sum(x^2), "\n", sep = "")
 ## for+ }
-## 2: 4.217146
-## 5: 1.584725
-## 10: 15.88258
-## 20: 19.79278
-## 50: 57.49874
+## 2: 0.5839151
+## 5: 7.931336
+## 10: 4.087977
+## 20: 46.47196
+## 50: 66.42267
 ## 
 ## for&gt; f &lt;- factor(sample(letters[1:5], 10, replace = TRUE))
 ## 
 ## for&gt; for(i in unique(f)) print(i)
-## [1] "e"
 ## [1] "a"
-## [1] "c"
 ## [1] "b"
-## [1] "d"
+## [1] "c"
+## [1] "e"
 ```
 
 ---
@@ -1302,13 +1309,13 @@ kaggle %&gt;%
 
 # Top 5 Countries - Plot #2
 
-![](presentation_files/figure-html/unnamed-chunk-43-1.png)&lt;!-- --&gt;
+![](presentation_files/figure-html/unnamed-chunk-36-1.png)&lt;!-- --&gt;
 
 ---
 
 # Top 5 Countries - Plot #3 Themed
 
-![](presentation_files/figure-html/unnamed-chunk-44-1.png)&lt;!-- --&gt;
+![](presentation_files/figure-html/unnamed-chunk-37-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -1336,14 +1343,14 @@ class: center, middle
 ---
 
 
-# More Reads
+# References
 
 
 - [R for Data Science](https://r4ds.had.co.nz/)
 
 - [R-Bloggers](https://www.r-bloggers.com/) 
 
-.right[&lt;img src="images/r4ds_had_cover.png" width="20%"&gt;]
+
 
 
 

@@ -40,8 +40,17 @@ class: inverse
 - Thus, get you ready to embark on your own journey to become a Data Scientist who uses R
 
 
+---
+
+# Content:
+
+This presentation's content is heavily borrowed from the book [**R for Data Science**](https://r4ds.had.co.nz) by **Garrett Grolemund** and **Hadley Wickham**
+
+
+.center[<img src="images/r4ds_had_cover.png" width="30%">]
 
 ---
+
 
 # About R
 
@@ -174,7 +183,6 @@ a
 ---
 
 # Factors
-
 * In R, factors are used to work with categorical variables, variables that have a fixed and known set of possible values.
 
 * Useful with Characters where non-Alphabetical Ordering is required
@@ -659,14 +667,14 @@ class: center, middle
 ---
 
 
-# More Reads
+# References
 
 
 - [R for Data Science](https://r4ds.had.co.nz/)
 
 - [R-Bloggers](https://www.r-bloggers.com/) 
 
-.right[<img src="images/r4ds_had_cover.png" width="20%">]
+
 
 
 
