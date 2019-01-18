@@ -13,7 +13,7 @@
 
 About the Dataset:
 
-* (Kaggle Survey 2018 Dataset)[https://www.kaggle.com/kaggle/kaggle-survey-2018/]
+* [Kaggle Survey 2018 Dataset](https://www.kaggle.com/kaggle/kaggle-survey-2018/)
 
 
 ### [Presentation Link - HTML](https://amrrs.github.io/devopedia_R4DS_workshop/presentation.html)
