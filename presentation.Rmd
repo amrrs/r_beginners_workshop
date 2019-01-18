@@ -171,12 +171,42 @@ print("Hello, World!") #<<
 a
 ```
 
+---
+
+# Factors
+
+* In R, factors are used to work with categorical variables, variables that have a fixed and known set of possible values.
+
+* Useful with Characters where non-Alphabetical Ordering is required
+
+```{r}
+days <- c("Thu","Wed","Sun")
+
+sort(days)
+```
+
+
+```{r}
+
+week_levels <- c("Mon","Tue","Wed","Thu","Fri","Sat","Sun")
+
+
+(days_f <- factor(days, levels = week_levels))
+
+```
+
+```{r}
+sort(days_f)  
+```
+
+
+
 
 ---
 
 # Packages
 
-## Package Installation
+## Package Installation & Loading
 
 ### From CRAN (usually Stable Version)
 
@@ -184,11 +214,51 @@ a
 install.packages("itunesr")
 ```
 
-### From Github (usually Development Version)
+**From Github (usually Development Version)**
 
 ```{r eval=FALSE}
 #install.packages("devtools")
 devtools::install_github("amrrs/itunesr")
+```
+
+### Loading
+
+```{r eval=FALSE}
+library(itunesr)
+```
+
+---
+
+# Help
+
+## using `help()`
+
+```{r eval=FALSE}
+help("runif")
+```
+
+## using ?
+
+```{r eval=FALSE}
+?sample
+```
+
+---
+
+# Help - Example
+
+```{r}
+example("for")
+```
+
+---
+
+# Packages Vignette
+
+```{r eval=FALSE}
+vignette("dplyr")
+
+browseVignettes("dplyr")
 ```
 
 

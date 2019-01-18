@@ -214,12 +214,57 @@ a
 ## [1] 45
 ```
 
+---
+
+# Factors
+
+* In R, factors are used to work with categorical variables, variables that have a fixed and known set of possible values.
+
+* Useful with Characters where non-Alphabetical Ordering is required
+
+
+```r
+days &lt;- c("Thu","Wed","Sun")
+
+sort(days)
+```
+
+```
+## [1] "Sun" "Thu" "Wed"
+```
+
+
+
+```r
+week_levels &lt;- c("Mon","Tue","Wed","Thu","Fri","Sat","Sun")
+
+
+(days_f &lt;- factor(days, levels = week_levels))
+```
+
+```
+## [1] Thu Wed Sun
+## Levels: Mon Tue Wed Thu Fri Sat Sun
+```
+
+
+```r
+sort(days_f)  
+```
+
+```
+## [1] Wed Thu Sun
+## Levels: Mon Tue Wed Thu Fri Sat Sun
+```
+
+
+
 
 ---
 
 # Packages
 
-## Package Installation
+## Package Installation &amp; Loading
 
 ### From CRAN (usually Stable Version)
 
@@ -228,12 +273,86 @@ a
 install.packages("itunesr")
 ```
 
-### From Github (usually Development Version)
+**From Github (usually Development Version)**
 
 
 ```r
 #install.packages("devtools")
 devtools::install_github("amrrs/itunesr")
+```
+
+### Loading
+
+
+```r
+library(itunesr)
+```
+
+---
+
+# Help
+
+## using `help()`
+
+
+```r
+help("runif")
+```
+
+## using ?
+
+
+```r
+?sample
+```
+
+---
+
+# Help - Example
+
+
+```r
+example("for")
+```
+
+```
+## 
+## for&gt; for(i in 1:5) print(1:i)
+## [1] 1
+## [1] 1 2
+## [1] 1 2 3
+## [1] 1 2 3 4
+## [1] 1 2 3 4 5
+## 
+## for&gt; for(n in c(2,5,10,20,50)) {
+## for+    x &lt;- stats::rnorm(n)
+## for+    cat(n, ": ", sum(x^2), "\n", sep = "")
+## for+ }
+## 2: 4.217146
+## 5: 1.584725
+## 10: 15.88258
+## 20: 19.79278
+## 50: 57.49874
+## 
+## for&gt; f &lt;- factor(sample(letters[1:5], 10, replace = TRUE))
+## 
+## for&gt; for(i in unique(f)) print(i)
+## [1] "e"
+## [1] "a"
+## [1] "c"
+## [1] "b"
+## [1] "d"
+```
+
+---
+
+# Packages Vignette
+
+
+```r
+vignette("dplyr")
+
+browseVignettes("dplyr")
 ```
 
 
@@ -1183,13 +1302,13 @@ kaggle %&gt;%
 
 # Top 5 Countries - Plot #2
 
-![](presentation_files/figure-html/unnamed-chunk-28-1.png)&lt;!-- --&gt;
+![](presentation_files/figure-html/unnamed-chunk-43-1.png)&lt;!-- --&gt;
 
 ---
 
 # Top 5 Countries - Plot #3 Themed
 
-![](presentation_files/figure-html/unnamed-chunk-29-1.png)&lt;!-- --&gt;
+![](presentation_files/figure-html/unnamed-chunk-44-1.png)&lt;!-- --&gt;
 
 
 ---
