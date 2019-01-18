@@ -108,13 +108,57 @@ The traditional first step - **Hello, World!**:
 --
 
 ```{r eval=TRUE, tidy=FALSE}
-print("Hello, World!")
+print("Hello, World!") #<<
+ 
 ```
 
 <br/>
 
 ###.center[That's one small step for a man, one giant leap for mankind]
 ###.center[Neil Armstrong]
+
+---
+
+# Arithmetic Operations
+
+```{r}
+2 + 3
+```
+
+```{r}
+50000 * 42222
+```
+
+```{r}
+2304 / 233
+```
+
+```{r}
+(33 + 44 ) * 232 / 12
+```
+
+---
+
+# Assignment Operators
+
+### .center[`<-` **Arrow (Less-than < and Minus - )**]
+
+### .center[`=` **(Equal Sign)**]
+
+```{r}
+(x <- 2 + 3)
+```
+
+
+```{r}
+(y = x ** 4)
+```
+
+```{r}
+5 * 9 -> a
+a
+```
+
  
 ---
 
@@ -470,6 +514,8 @@ class: center, middle
 # Object Detection in 3 Lines of R Code
 ## using Tiny YOLO 
 ### -Project Demo-
+
+
 
 ---
 
