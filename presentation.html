@@ -246,27 +246,6 @@ tidyverse::tidyverse_packages()
 library(tidyverse)
 ```
 
-```
-## ── Attaching packages ──────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
-```
-
-```
-## ✔ ggplot2 3.1.0     ✔ purrr   0.2.5
-## ✔ tibble  2.0.0     ✔ dplyr   0.7.8
-## ✔ tidyr   0.8.2     ✔ stringr 1.3.1
-## ✔ readr   1.3.1     ✔ forcats 0.3.0
-```
-
-```
-## Warning: package 'tibble' was built under R version 3.5.2
-```
-
-```
-## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()
-```
-
 
 ---
 
@@ -701,76 +680,285 @@ glimpse(kaggle)
 ## $ `What barriers prevent you from making your work even easier to reuse and reproduce? (Select all that apply) - Other - Text`                                                                                                                &lt;dbl&gt; …
 ```
 
+---
 
+class: inverse, center
+
+# Dataset Overview 
+## Demo on RStudio
+
+---
+
+# Data Questions (Business Problem)
+
+- What's the percentage of Male and Female respondents?
+
+- What are the top 10 countries?
+
+---
+
+# dyplr verbs
+
+- `mutate()` - adds new variables that are functions of existing variables
+- `select()` - picks variables based on their names.
+- `filter()` - picks cases based on their values.
+- `summarise()` - reduces multiple values down to a single summary.
+- `arrange()` - changes the ordering of the rows.
+
+---
+
+# Introducing %&gt;% Pipe Operator
+
+- The pipe, `%&gt;%`, comes from the magrittr package by Stefan Milton Bache
+
+- **Output of LHS** is given as the **input (first argument) of RHS**
+
+### Example
+
+
+```r
+kaggle %&gt;% dim()
+```
+
+```
+## [1] 23859   395
+```
+
+Although doesn't make much sense to use `%&gt;%` in this context, Hope it explains the function.
+
+---
+
+# Percentage of Male and Female
+
+* Column name - `What is your gender? - Selected Choice`
+
+### Pseudo-code
+
+- `group_by` the `kaggle` dataframe on column `What is your gender? - Selected Choice`
+- `count` the values 
+-  calculate `percentage` value from the `count`s
+
+---
+
+# % of Male and Female - Group By &amp; Count
+
+
+```r
+kaggle %&gt;% 
+  group_by(`What is your gender? - Selected Choice`) %&gt;% 
+  count() 
+```
+
+```
+## # A tibble: 4 x 2
+## # Groups:   What is your gender? - Selected Choice [4]
+##   `What is your gender? - Selected Choice`     n
+##   &lt;chr&gt;                                    &lt;int&gt;
+## 1 Female                                    4010
+## 2 Male                                     19430
+## 3 Prefer not to say                          340
+## 4 Prefer to self-describe                     79
+```
+
+---
+
+# % of Male and Female - Group By &amp; Count - Sorted 
+
+
+```r
+kaggle %&gt;% 
+  group_by(`What is your gender? - Selected Choice`) %&gt;% 
+  count() %&gt;% 
+  arrange(desc(n))
+```
+
+```
+## # A tibble: 4 x 2
+## # Groups:   What is your gender? - Selected Choice [4]
+##   `What is your gender? - Selected Choice`     n
+##   &lt;chr&gt;                                    &lt;int&gt;
+## 1 Male                                     19430
+## 2 Female                                    4010
+## 3 Prefer not to say                          340
+## 4 Prefer to self-describe                     79
+```
 
 
 ---
 
-# Tables
+# % of Male and Female - Percentage
 
-If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
 
 
 ```r
-knitr::kable(head(iris), format = 'html')
+kaggle %&gt;% 
+  group_by(`What is your gender? - Selected Choice`) %&gt;% 
+  count() %&gt;% 
+  ungroup() %&gt;% 
+  mutate(perc = round(n / sum(n),2))
+```
+
+```
+## # A tibble: 4 x 3
+##   `What is your gender? - Selected Choice`     n  perc
+##   &lt;chr&gt;                                    &lt;int&gt; &lt;dbl&gt;
+## 1 Female                                    4010  0.17
+## 2 Male                                     19430  0.81
+## 3 Prefer not to say                          340  0.01
+## 4 Prefer to self-describe                     79  0
+```
+
+---
+
+# % of Male and Female - Nice_Looking_Table
+
+
+
+```r
+kaggle %&gt;% 
+  group_by(`What is your gender? - Selected Choice`) %&gt;% 
+  count() %&gt;% 
+  ungroup() %&gt;% 
+  mutate(perc = round(n / sum(n),2)) %&gt;% 
+  knitr::kable(format = "html")
 ```
 
 &lt;table&gt;
  &lt;thead&gt;
   &lt;tr&gt;
-   &lt;th style="text-align:right;"&gt; Sepal.Length &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Sepal.Width &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Petal.Length &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; Petal.Width &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; Species &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; What is your gender? - Selected Choice &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; n &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; perc &lt;/th&gt;
   &lt;/tr&gt;
  &lt;/thead&gt;
 &lt;tbody&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 5.1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.5 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.2 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; setosa &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4010 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.17 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 4.9 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.2 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; setosa &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19430 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.81 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 4.7 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.2 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.2 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; setosa &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Prefer not to say &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 340 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.01 &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 4.6 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.5 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.2 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; setosa &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 5.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.6 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.2 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; setosa &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 5.4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.9 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1.7 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.4 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; setosa &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Prefer to self-describe &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 79 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.00 &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 
+---
+
+class: inverse,center,middle
+
+# But, Wait!!!
+## Go Back and See 
+### If you have only `Male` and `Female`?
+
+
+---
+
+class: inverse,center,middle
+
+# Time for some cleaning
+## In the form of `filter()`ing
+
+---
+
+# % of Male and Female - Filtered_Nice
+
+
+
+```r
+kaggle %&gt;% 
+  filter(`What is your gender? - Selected Choice` %in% c("Male","Female")) %&gt;% 
+  group_by(`What is your gender? - Selected Choice`) %&gt;% 
+  count() %&gt;% 
+  ungroup() %&gt;% 
+  mutate(perc = round(n / sum(n),2)) %&gt;% 
+  knitr::kable(format = "html")
+```
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; What is your gender? - Selected Choice &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; n &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; perc &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4010 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.17 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19430 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.83 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+ 
+
+---
+
+class: inverse,center,middle
+
+# Awkward!!!
+## The column name isn't it?
+
+---
+
+# % of Male and Female - All_Nice_Table
+
+
+```r
+library(scales) #for Percentage Formatting
+
+kaggle %&gt;% 
+  filter(`What is your gender? - Selected Choice` %in% c("Male","Female")) %&gt;% 
+  group_by(`What is your gender? - Selected Choice`) %&gt;% 
+  count() %&gt;% 
+  ungroup() %&gt;% 
+  mutate(perc = round(n / sum(n),2)) %&gt;% 
+  mutate(perc = scales::percent(perc)) %&gt;% 
+  rename(Gender = `What is your gender? - Selected Choice`,
+         Count = n,
+         Percentage = perc) %&gt;% 
+  knitr::kable(format = "html")
+```
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Gender &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Count &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Percentage &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4010 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 17.0% &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19430 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 83.0% &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 
 ---
 

@@ -239,14 +239,151 @@ class: inverse, center
 
 ---
 
-# Tables
+# dyplr verbs
 
-If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
+- `mutate()` - adds new variables that are functions of existing variables
+- `select()` - picks variables based on their names.
+- `filter()` - picks cases based on their values.
+- `summarise()` - reduces multiple values down to a single summary.
+- `arrange()` - changes the ordering of the rows.
+
+---
+
+# Introducing %>% Pipe Operator
+
+- The pipe, `%>%`, comes from the magrittr package by Stefan Milton Bache
+
+- **Output of LHS** is given as the **input (first argument) of RHS**
+
+### Example
 
 ```{r}
-knitr::kable(head(iris), format = 'html')
+
+kaggle %>% dim()
+
 ```
 
+Although doesn't make much sense to use `%>%` in this context, Hope it explains the function.
+
+---
+
+# Percentage of Male and Female
+
+* Column name - `What is your gender? - Selected Choice`
+
+### Pseudo-code
+
+- `group_by` the `kaggle` dataframe on column `What is your gender? - Selected Choice`
+- `count` the values 
+-  calculate `percentage` value from the `count`s
+
+---
+
+# % of Male and Female - Group By & Count
+
+```{r}
+kaggle %>% 
+  group_by(`What is your gender? - Selected Choice`) %>% 
+  count() 
+```
+
+---
+
+# % of Male and Female - Group By & Count - Sorted 
+
+```{r}
+kaggle %>% 
+  group_by(`What is your gender? - Selected Choice`) %>% 
+  count() %>% 
+  arrange(desc(n))
+```
+
+
+---
+
+# % of Male and Female - Percentage
+
+
+```{r}
+kaggle %>% 
+  group_by(`What is your gender? - Selected Choice`) %>% 
+  count() %>% 
+  ungroup() %>% 
+  mutate(perc = round(n / sum(n),2))
+```
+
+---
+
+# % of Male and Female - Nice_Looking_Table
+
+
+```{r}
+kaggle %>% 
+  group_by(`What is your gender? - Selected Choice`) %>% 
+  count() %>% 
+  ungroup() %>% 
+  mutate(perc = round(n / sum(n),2)) %>% 
+  knitr::kable(format = "html")
+```
+
+---
+
+class: inverse,center,middle
+
+# But, Wait!!!
+## Go Back and See 
+### If you have only `Male` and `Female`?
+
+
+---
+
+class: inverse,center,middle
+
+# Time for some cleaning
+## In the form of `filter()`ing
+
+---
+
+# % of Male and Female - Filtered_Nice
+
+
+```{r}
+kaggle %>% 
+  filter(`What is your gender? - Selected Choice` %in% c("Male","Female")) %>% 
+  group_by(`What is your gender? - Selected Choice`) %>% 
+  count() %>% 
+  ungroup() %>% 
+  mutate(perc = round(n / sum(n),2)) %>% 
+  knitr::kable(format = "html")
+```
+ 
+
+---
+
+class: inverse,center,middle
+
+# Awkward!!!
+## The column name isn't it?
+
+---
+
+# % of Male and Female - All_Nice_Table
+
+```{r}
+library(scales) #for Percentage Formatting
+
+kaggle %>% 
+  filter(`What is your gender? - Selected Choice` %in% c("Male","Female")) %>% 
+  group_by(`What is your gender? - Selected Choice`) %>% 
+  count() %>% 
+  ungroup() %>% 
+  mutate(perc = round(n / sum(n),2)) %>% 
+  mutate(perc = scales::percent(perc)) %>% 
+  rename(Gender = `What is your gender? - Selected Choice`,
+         Count = n,
+         Percentage = perc) %>% 
+  knitr::kable(format = "html")
+```
 
 ---
 
