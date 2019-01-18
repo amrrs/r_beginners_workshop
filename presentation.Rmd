@@ -263,7 +263,7 @@ class: inverse, center
 
 - What's the percentage of Male and Female respondents?
 
-- What are the top 10 countries?
+- What are the top 5 countries?
 
 ---
 
@@ -423,8 +423,124 @@ kaggle %>%
   knitr::kable(format = "html")
 ```
 
+---
+
+# Top 5 Countries
+
+* Column name - `In which country do you currently reside?`
 
 
+### Pseudo-code
+
+- `count` number of respondents from each country
+- `arrange` countries in descending order based on their count value
+- `top 5` in the list is the output
+
+---
+
+# Top 5 Countries - Code
+
+```{r}
+kaggle %>% 
+  count(`In which country do you currently reside?`) %>% 
+  arrange(desc(n)) %>% 
+  top_n(5) %>% 
+  knitr::kable(format = "html")
+```
+
+
+---
+class: inverse,center,middle
+
+# Is `Other` a country name???
+
+---
+
+# Top 5 Countries 
+
+```{r}
+kaggle %>% 
+  filter(!`In which country do you currently reside?` %in% "Other") %>% 
+  count(`In which country do you currently reside?`) %>% 
+  rename(Country = `In which country do you currently reside?`) %>% 
+  arrange(desc(n)) %>% 
+  top_n(5) %>% 
+  knitr::kable(format = "html")
+```
+
+
+---
+class: inverse,center,middle
+
+# Table is nice, but a visually appealing plot is Nicer
+## 😉
+
+
+---
+
+# Top 5 Countries - Plot #1
+
+```{r eval = FALSE}
+kaggle %>% 
+  filter(!`In which country do you currently reside?` %in% "Other") %>% 
+  count(`In which country do you currently reside?`) %>% 
+  rename(Country = `In which country do you currently reside?`) %>% 
+  arrange(desc(n)) %>% 
+  top_n(5) %>% 
+  ggplot() + geom_bar(aes(Country,n), stat = "identity") +
+  coord_flip() +
+  theme_minimal() +
+  labs(title = "Top 5 Countries",
+       subtitle = "From where Kaggle Survey Respondentns reside",
+       x = "Country",
+       y = "Number of Respondents",
+       caption = "Data Source: Kaggle Survey 2018")
+```
+
+---
+
+# Top 5 Countries - Plot #2
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+kaggle %>% 
+  filter(!`In which country do you currently reside?` %in% "Other") %>% 
+  count(`In which country do you currently reside?`) %>% 
+  rename(Country = `In which country do you currently reside?`) %>% 
+  arrange(desc(n)) %>% 
+  top_n(5) %>% 
+  ggplot() + geom_bar(aes(Country,n), stat = "identity") +
+  coord_flip() +
+  theme_minimal() +
+  labs(title = "Top 5 Countries",
+       subtitle = "From where Kaggle Survey Respondents reside",
+       x = "Country",
+       y = "Number of Respondents",
+       caption = "Data Source: Kaggle Survey 2018")
+```
+
+---
+
+# Top 5 Countries - Plot #3 Themed
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width= 10}
+library(ggthemes)
+
+kaggle %>% 
+  filter(!`In which country do you currently reside?` %in% "Other") %>% 
+  count(`In which country do you currently reside?`) %>% 
+  rename(Country = `In which country do you currently reside?`) %>% 
+  arrange(desc(n)) %>% 
+  top_n(5) %>% 
+  ggplot() + geom_bar(aes(Country,n), stat = "identity") +
+ # coord_flip() +
+  theme_minimal() +
+  labs(title = "Top 5 Countries",
+       subtitle = "From where Kaggle Survey Respondents reside",
+       x = "Country",
+       y = "Number of Respondents",
+       caption = "Data Source: Kaggle Survey 2018") +
+  ggthemes::theme_wsj()
+```
 
 ---
 

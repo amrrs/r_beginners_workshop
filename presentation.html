@@ -721,7 +721,7 @@ class: inverse, center
 
 - What's the percentage of Male and Female respondents?
 
-- What are the top 10 countries?
+- What are the top 5 countries?
 
 ---
 
@@ -1009,8 +1009,164 @@ kaggle %&gt;%
 &lt;/tbody&gt;
 &lt;/table&gt;
 
+---
+
+# Top 5 Countries
+
+* Column name - `In which country do you currently reside?`
 
 
+### Pseudo-code
+
+- `count` number of respondents from each country
+- `arrange` countries in descending order based on their count value
+- `top 5` in the list is the output
+
+---
+
+# Top 5 Countries - Code
+
+
+```r
+kaggle %&gt;% 
+  count(`In which country do you currently reside?`) %&gt;% 
+  arrange(desc(n)) %&gt;% 
+  top_n(5) %&gt;% 
+  knitr::kable(format = "html")
+```
+
+```
+## Selecting by n
+```
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; In which country do you currently reside? &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; n &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; United States of America &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4716 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; India &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4417 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; China &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1644 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Other &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1036 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Russia &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 879 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+class: inverse,center,middle
+
+# Is `Other` a country name???
+
+---
+
+# Top 5 Countries 
+
+
+```r
+kaggle %&gt;% 
+  filter(!`In which country do you currently reside?` %in% "Other") %&gt;% 
+  count(`In which country do you currently reside?`) %&gt;% 
+  rename(Country = `In which country do you currently reside?`) %&gt;% 
+  arrange(desc(n)) %&gt;% 
+  top_n(5) %&gt;% 
+  knitr::kable(format = "html")
+```
+
+```
+## Selecting by n
+```
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Country &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; n &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; United States of America &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4716 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; India &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4417 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; China &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1644 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Russia &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 879 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Brazil &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 736 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+class: inverse,center,middle
+
+# Table is nice, but a visually appealing plot is Nicer
+## 😉
+
+
+---
+
+# Top 5 Countries - Plot #1
+
+
+```r
+kaggle %&gt;% 
+  filter(!`In which country do you currently reside?` %in% "Other") %&gt;% 
+  count(`In which country do you currently reside?`) %&gt;% 
+  rename(Country = `In which country do you currently reside?`) %&gt;% 
+  arrange(desc(n)) %&gt;% 
+  top_n(5) %&gt;% 
+  ggplot() + geom_bar(aes(Country,n), stat = "identity") +
+  coord_flip() +
+  theme_minimal() +
+  labs(title = "Top 5 Countries",
+       subtitle = "From where Kaggle Survey Respondentns reside",
+       x = "Country",
+       y = "Number of Respondents",
+       caption = "Data Source: Kaggle Survey 2018")
+```
+
+---
+
+# Top 5 Countries - Plot #2
+
+![](presentation_files/figure-html/unnamed-chunk-28-1.png)&lt;!-- --&gt;
+
+---
+
+# Top 5 Countries - Plot #3 Themed
+
+![](presentation_files/figure-html/unnamed-chunk-29-1.png)&lt;!-- --&gt;
 
 ---
 
