@@ -21,6 +21,7 @@ class: center, middle, inverse, title-slide
 
 
 
+
 # About Me
 
 - Studied at **Government College of Technology, Coimbatore**
@@ -30,7 +31,18 @@ class: center, middle, inverse, title-slide
 - R Packages Developer ( `coinmarketcapr`, `itunesr`)
 
 
-.center[![Right-aligned image](https://images-na.ssl-images-amazon.com/images/G/01/img15/pet-products/small-tiles/23695_pets_vertical_store_dogs_small_tile_8._CB312176604_.jpg)]
+---
+
+class: inverse
+
+# Disclaimer:
+
+- This workshop is **NOT** going to make you a Data Scientist **in a day**. 
+
+- The objective is to help you get a flavor of R and how it is used in Data Science
+
+- Thus, get you ready to embark on your own journey to become a Data Scientist who uses R
+
 
 
 ---
@@ -207,6 +219,22 @@ a
 class: inverse, center, middle
 
 # Data wrangling and Visualization using Tidyverse
+
+---
+class: center, middle
+
+# Data Science Framework
+
+
+There are now like, you know, a billion venn diagrams showing you what data science is. But to me I think the definition is pretty simple. Whenever you're struggling with data, trying to understand what's going on with data, whenever you're trying to turn that **raw data into insight and understanding and discoveries**. I think that's **Data Science.**" - Hadley Wickham
+
+&lt;figure&gt;
+    &lt;img src='images/hadley_data_science.png' width="80% /&gt;
+      &lt;font size="2"&gt;
+        &lt;figcaption&gt; Source: &lt;a href ="https://www.youtube.com/watch?v=cpbtcsGE0OA"&gt;Hadley Wickham&lt;/a&gt;
+        &lt;/figcaption&gt;
+      &lt;/font&gt;
+&lt;/figure&gt;
 
 ---
 
@@ -740,7 +768,29 @@ Although doesn't make much sense to use `%&gt;%` in this context, Hope it explai
 
 ---
 
-# % of Male and Female - Group By &amp; Count
+# % of Male and Female - Group By &amp; Count - Method 1
+
+
+
+```r
+kaggle %&gt;% 
+  group_by(`What is your gender? - Selected Choice`) %&gt;% 
+  summarise(n = n())
+```
+
+```
+## # A tibble: 4 x 2
+##   `What is your gender? - Selected Choice`     n
+##   &lt;chr&gt;                                    &lt;int&gt;
+## 1 Female                                    4010
+## 2 Male                                     19430
+## 3 Prefer not to say                          340
+## 4 Prefer to self-describe                     79
+```
+
+---
+
+# % of Male and Female - Group By &amp; Count - Method 2
 
 
 ```r
@@ -914,8 +964,7 @@ kaggle %&gt;%
 
 class: inverse,center,middle
 
-# Awkward!!!
-## The column name isn't it?
+# An Awkward column name, isn't it??!
 
 ---
 
@@ -960,6 +1009,9 @@ kaggle %&gt;%
 &lt;/tbody&gt;
 &lt;/table&gt;
 
+
+
+
 ---
 
 class: inverse, center, middle
@@ -993,6 +1045,12 @@ class: center, middle
 Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
 
 The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](http://yihui.name/knitr), and [R Markdown](https://rmarkdown.rstudio.com).
+
+---
+
+background-image: url(images/ppf_success.gif)
+background-size: 100%
+class: center, bottom
     </textarea>
 <script src="libs/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({

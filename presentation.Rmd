@@ -17,6 +17,7 @@ output:
 options(htmltools.dir.version = FALSE)
 ```
 
+
 # About Me
 
 - Studied at **Government College of Technology, Coimbatore**
@@ -26,7 +27,18 @@ options(htmltools.dir.version = FALSE)
 - R Packages Developer ( `coinmarketcapr`, `itunesr`)
 
 
-.center[![Right-aligned image](https://images-na.ssl-images-amazon.com/images/G/01/img15/pet-products/small-tiles/23695_pets_vertical_store_dogs_small_tile_8._CB312176604_.jpg)]
+---
+
+class: inverse
+
+# Disclaimer:
+
+- This workshop is **NOT** going to make you a Data Scientist **in a day**. 
+
+- The objective is to help you get a flavor of R and how it is used in Data Science
+
+- Thus, get you ready to embark on your own journey to become a Data Scientist who uses R
+
 
 
 ---
@@ -166,6 +178,22 @@ class: inverse, center, middle
 # Data wrangling and Visualization using Tidyverse
 
 ---
+class: center, middle
+
+# Data Science Framework
+
+
+There are now like, you know, a billion venn diagrams showing you what data science is. But to me I think the definition is pretty simple. Whenever you're struggling with data, trying to understand what's going on with data, whenever you're trying to turn that **raw data into insight and understanding and discoveries**. I think that's **Data Science.**" - Hadley Wickham
+
+<figure>
+    <img src='images/hadley_data_science.png' width="80% />
+      <font size="2">
+        <figcaption> Source: <a href ="https://www.youtube.com/watch?v=cpbtcsGE0OA">Hadley Wickham</a>
+        </figcaption>
+      </font>
+</figure>
+
+---
 
 # Tidyverse
 
@@ -279,7 +307,18 @@ Although doesn't make much sense to use `%>%` in this context, Hope it explains 
 
 ---
 
-# % of Male and Female - Group By & Count
+# % of Male and Female - Group By & Count - Method 1
+
+
+```{r}
+kaggle %>% 
+  group_by(`What is your gender? - Selected Choice`) %>% 
+  summarise(n = n())
+```
+
+---
+
+# % of Male and Female - Group By & Count - Method 2
 
 ```{r}
 kaggle %>% 
@@ -362,8 +401,7 @@ kaggle %>%
 
 class: inverse,center,middle
 
-# Awkward!!!
-## The column name isn't it?
+# An Awkward column name, isn't it??!
 
 ---
 
@@ -384,6 +422,9 @@ kaggle %>%
          Percentage = perc) %>% 
   knitr::kable(format = "html")
 ```
+
+
+
 
 ---
 
@@ -418,3 +459,11 @@ class: center, middle
 Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
 
 The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](http://yihui.name/knitr), and [R Markdown](https://rmarkdown.rstudio.com).
+
+---
+
+background-image: url(images/ppf_success.gif)
+background-size: 100%
+class: center, bottom
+
+
