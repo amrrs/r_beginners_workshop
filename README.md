@@ -16,5 +16,7 @@ About the Dataset:
 * (Kaggle Survey 2018 Dataset)[https://www.kaggle.com/kaggle/kaggle-survey-2018/]
 
 
-### [Presentation Link](https://amrrs.github.io/devopedia_R4DS_workshop/presentation.html)
+### [Presentation Link - HTML](https://amrrs.github.io/devopedia_R4DS_workshop/presentation.html)
+
+### [Presentation PDF](https://github.com/amrrs/devopedia_R4DS_workshop/blob/master/presentation.pdf)
 
