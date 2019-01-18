@@ -495,7 +495,7 @@ db[,"year_since"]
 ## For Loop
 
 ```{r}
-for (month_name in month.abb) {
+for (month_name in month.abb[1:4]) {
   print(paste("This month", month_name, "beautiful!!!"))
 }
 
@@ -509,11 +509,17 @@ For advanced functional programming, refer `purrr` package
 
 # Logical Operations 
 
+## %in% operator
+
 ```{r}
 
 iris$Species %in% "virginica"
 
 ```
+
+---
+
+## Logical Operators
 
 ```{r}
 1:10 > 5
@@ -523,6 +529,9 @@ iris$Species %in% "virginica"
 1:10 == 4
 ```
 
+```{r}
+!1:10 == 4
+```
 
 ---
 # Conditions

@@ -757,7 +757,7 @@ db[,"year_since"]
 
 
 ```r
-for (month_name in month.abb) {
+for (month_name in month.abb[1:4]) {
   print(paste("This month", month_name, "beautiful!!!"))
 }
 ```
@@ -767,14 +767,6 @@ for (month_name in month.abb) {
 ## [1] "This month Feb beautiful!!!"
 ## [1] "This month Mar beautiful!!!"
 ## [1] "This month Apr beautiful!!!"
-## [1] "This month May beautiful!!!"
-## [1] "This month Jun beautiful!!!"
-## [1] "This month Jul beautiful!!!"
-## [1] "This month Aug beautiful!!!"
-## [1] "This month Sep beautiful!!!"
-## [1] "This month Oct beautiful!!!"
-## [1] "This month Nov beautiful!!!"
-## [1] "This month Dec beautiful!!!"
 ```
 
 As you move forward, Check the family of `apply` functions - `sapply()`, `tapply()`, `lapply()`, `apply()`.
@@ -784,6 +776,8 @@ For advanced functional programming, refer `purrr` package
 ---
 
 # Logical Operations 
+
+## %in% operator
 
 
 ```r
@@ -807,6 +801,10 @@ iris$Species %in% "virginica"
 ## [144]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
 ```
 
+---
+
+## Logical Operators
+
 
 ```r
 1:10 &gt; 5
@@ -825,6 +823,14 @@ iris$Species %in% "virginica"
 ##  [1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
 ```
 
+
+```r
+!1:10 == 4
+```
+
+```
+##  [1]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+```
 
 ---
 # Conditions
