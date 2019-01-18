@@ -40,12 +40,13 @@ class: inverse, center, middle
 
 - R is a language and environment for statistical computing and graphics. (Ref: [`r-project.org`](https://www.r-project.org/about.html))
 
+- R was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand
+
 - R is Free
 
 - R can be extended (easily) via *packages*.
 
 .right[![image](images/Rlogo.png)]
-
 
 ---
 class: inverse, center, middle
@@ -67,6 +68,24 @@ class: inverse, center, middle
 
 .right[<img src="images/RStudio.png" width="40%">]
 
+
+---
+
+# R Ecosystem
+
+Like `Python`, `R`'s strength lies in its Ecosystem. Why R? It's primarily - R's packages.
+
+
+### Growth
+
+
+<figure>
+    <img src='images/number-of-submitted-packages-to-CRAN.png' width="80% />
+      <font size="2">
+        <figcaption> Source: <a href ="https://gist.github.com/daroczig/3cf06d6db4be2bbe3368">@daroczig</a>
+        </figcaption>
+      </font>
+</figure>
 
 ---
 class: inverse, center, middle
