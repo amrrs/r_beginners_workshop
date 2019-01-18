@@ -592,12 +592,13 @@ class: center, middle
 # More Reads
 
 
-.- [R for Data Science](https://r4ds.had.co.nz/)
-- [R-bloggers](https://www.r-bloggers.com/)
+- [R for Data Science](https://r4ds.had.co.nz/)
 
-right[<img src="images/r4ds_had_cover.png" width="40%">]
+- [R-Bloggers](https://www.r-bloggers.com/) 
 
-.right[<img src="images/r-bloggers_logo.png" width="40%">]
+.right[<img src="images/r4ds_had_cover.png" width="20%">]
+
+
 
 ---
 
