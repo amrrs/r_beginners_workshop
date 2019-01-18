@@ -28,15 +28,10 @@ options(htmltools.dir.version = FALSE)
 
 .center[![Right-aligned image](https://images-na.ssl-images-amazon.com/images/G/01/img15/pet-products/small-tiles/23695_pets_vertical_store_dogs_small_tile_8._CB312176604_.jpg)]
 
----
-class: inverse, center, middle
-
-# About R
 
 ---
 
 # About R
-
 
 - R is a language and environment for statistical computing and graphics. (Ref: [`r-project.org`](https://www.r-project.org/about.html))
 
@@ -46,13 +41,17 @@ class: inverse, center, middle
 
 - R can be extended (easily) via *packages*.
 
+- R is an interpreted language
+
+
 .right[![image](images/Rlogo.png)]
+
 
 ---
 class: inverse, center, middle
 
-# About RStudio
-
+# R Interpreter / Console / GUI
+## Demo
 ---
 
 # About RStudio
@@ -67,6 +66,13 @@ class: inverse, center, middle
 
 
 .right[<img src="images/RStudio.png" width="40%">]
+
+
+---
+class: inverse, center, middle
+
+# RStudio
+## Demo
 
 
 ---
