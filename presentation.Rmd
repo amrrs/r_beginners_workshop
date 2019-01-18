@@ -226,7 +226,7 @@ typeof(vector_of_numeric)
 ### Numeric Vector
 
 ```{r}
-nummy <- c(1,2,3) 
+nummy <- 1:4
 
 nummy_int <- c(1L,2L,3L)  
 ```
@@ -321,8 +321,30 @@ new_money
 typeof(new_money)
 
 ```
+
+
 ---
---- 
+
+#Vector - Accessing
+
+```{r}
+
+month.abb #in-built character vector with Month Abbreviations
+
+month.abb[2]
+
+```
+
+```{r}
+month.abb[4:7]
+```
+
+```{r}
+month.abb[c(2,5,7,10)]
+```
+
+---
+---
 # Vector Manipulation
 
 ## Appending
@@ -385,6 +407,140 @@ week_levels <- c("Mon","Tue","Wed","Thu","Fri","Sat","Sun")
 sort(days_f)  
 ```
 
+---
+
+# List
+
+Lists are a step up in complexity from atomic vectors: each element can be any type, not just vectors. 
+
+```{r}
+
+(a_list <- list("abcd",123,1:12,month.abb))
+
+```
+---
+
+# List Accessing
+
+```{r}
+a_list[[1]]
+
+a_list[[4]][4]
+```
+
+
+---
+
+# Matrix
+
+```{r}
+new_m <- matrix(data = 1:12, nrow = 3)
+
+new_m
+```
+
+```{r}
+new_m * 20
+```
+
+
+```{r}
+dim(new_m)
+new_m[2,3]
+```
+---
+# Dataframe
+
+## Tabular Structure 
+
+* dimension 
+* row.names
+* col.names
+
+
+```{r}
+colleges <- c("CIT","GCT","PSG")
+
+year <- c(2019,2018,2017)
+
+db <- data.frame(college_names = colleges, year_since = year)
+
+db
+
+
+```
+
+---
+# Dataframe Manipulation
+
+```{r}
+db$college_names
+```
+
+```{r}
+db[2,2] <- 1990
+
+db
+
+```
+
+```{r}
+db[,"year_since"]
+```
+
+---
+
+# Loops & Iterators
+
+## For Loop
+
+```{r}
+for (month_name in month.abb) {
+  print(paste("This month", month_name, "beautiful!!!"))
+}
+
+```
+
+As you move forward, Check the family of `apply` functions - `sapply()`, `tapply()`, `lapply()`, `apply()`.
+
+For advanced functional programming, refer `purrr` package
+
+---
+
+# Logical Operations 
+
+```{r}
+
+iris$Species %in% "virginica"
+
+```
+
+```{r}
+1:10 > 5
+```
+
+```{r}
+1:10 == 4
+```
+
+
+---
+# Conditions
+
+```{r}
+if (iris$Sepal.Length[2]>5) {
+  print("it is gt 5")
+} else print("it is not")
+```
+
+
+```{r}
+if (iris$Sepal.Length>10) {print("hello")}
+```
+
+```{r}
+ifelse(iris$Sepal.Length>6, "more_than_10","les_than_10")
+```
 
 
 
@@ -757,7 +913,7 @@ class: inverse,center,middle
 
 # Top 5 Countries - Plot #1
 
-```{r countries1 ,eval = FALSE}
+```{r countries1, eval = FALSE}
 kaggle %>% 
   filter(!`In which country do you currently reside?` %in% "Other") %>% 
   count(`In which country do you currently reside?`) %>% 
@@ -778,7 +934,7 @@ kaggle %>%
 
 # Top 5 Countries - Plot #2
 
-```{r countries2 ,echo=FALSE, message=FALSE, warning=FALSE}
+```{r countries2, echo=FALSE, message=FALSE, warning=FALSE}
 kaggle %>% 
   filter(!`In which country do you currently reside?` %in% "Other") %>% 
   count(`In which country do you currently reside?`) %>% 
@@ -799,7 +955,7 @@ kaggle %>%
 
 # Top 5 Countries - Plot #3 Themed
 
-```{r countries3 ,echo=FALSE, message=FALSE, warning=FALSE, fig.width= 10}
+```{r countries3, echo=FALSE, message=FALSE, warning=FALSE, fig.width= 10}
 library(ggthemes)
 
 kaggle %>% 
