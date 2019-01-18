@@ -542,7 +542,15 @@ kaggle %>%
   ggthemes::theme_wsj()
 ```
 
+-
 ---
+
+class: inverse, center, middle
+
+# Documentation and Reporting using R Markdown
+## Demo
+
+--
 
 class: inverse, center, middle
 
