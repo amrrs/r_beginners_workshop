@@ -20,3 +20,8 @@ About the Dataset:
 
 ### [Presentation PDF](https://github.com/amrrs/devopedia_R4DS_workshop/blob/master/presentation.pdf)
 
+# Re-Rendering the Presentation
+
+* Install [`xaringan`](https://github.com/yihui/xaringan) R package 
+* Open `presentation.Rmd` and `Knit` the Rmarkdown file
+* Rendered `presentation.html` would be saved in the project folder

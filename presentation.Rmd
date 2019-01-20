@@ -177,7 +177,7 @@ print("Hello, World!") #<<
 
 ```{r}
 5 * 9 -> a
-a
+a2 + 3
 ```
 
 ---
@@ -226,7 +226,7 @@ typeof(vector_of_numeric)
 ### Numeric Vector
 
 ```{r}
-nummy <- 1:4
+nummy <- c(2,3,4)
 
 nummy_int <- c(1L,2L,3L)  
 ```
@@ -240,6 +240,10 @@ typeof(nummy_int)
 
 ```{r}
 is.numeric(nummy)
+is.numeric(nummy_int)
+
+is.double(nummy)
+is.double(nummy_int)
 ```
 
 
