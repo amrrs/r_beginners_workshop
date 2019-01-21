@@ -15,6 +15,10 @@ About the Dataset:
 
 * [Kaggle Survey 2018 Dataset](https://www.kaggle.com/kaggle/kaggle-survey-2018/)
 
+Project Demo:
+
+* [Object Detection in R using Tiny YOLO](https://heartbeat.fritz.ai/object-detection-in-just-3-lines-of-r-code-using-tiny-yolo-b5a16e50e8a0) 
+
 
 ### [Presentation Link - HTML](https://amrrs.github.io/devopedia_R4DS_workshop/presentation.html)
 
