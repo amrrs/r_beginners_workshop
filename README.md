@@ -2,13 +2,16 @@
 
 ## Instructions
 
-* Download and Install [R](https://www.r-project.org/)
-* Download and Install [RStudio](https://www.rstudio.com/products/rstudio/download/)
-* Installation the Following Packages
+* **Download and Install [R](https://www.r-project.org/)**
+* **Download and Install [RStudio](https://www.rstudio.com/products/rstudio/download/)**
+* **Install the Following Packages**
   * tidyverse - `install.packages('tidyverse')` (**Required**)
   * scales - `install.packages('scales')` 
   * ggthemes - `install.packages('ggthemes')` 
-* Clone/Download this Repo and Save it in your Local Machine
+* **Clone/Download** this Repo and Save it in your Local Machine
+
+<img src = images/github_repo_download.png width="70%">
+
 * Please keep in mind, This Repo contains a Dataset of 40ish MB Size (You are free to use R's in-built datasets in the workshop)
 
 About the Dataset:
