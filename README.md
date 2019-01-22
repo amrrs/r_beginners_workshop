@@ -1,4 +1,4 @@
-# Devopedia R4DS workshop
+# R Beginner's Workshop
 
 ## Instructions
 
@@ -20,12 +20,13 @@ Project Demo:
 * [Object Detection in R using Tiny YOLO](https://heartbeat.fritz.ai/object-detection-in-just-3-lines-of-r-code-using-tiny-yolo-b5a16e50e8a0) 
 
 
-### [Presentation Link - HTML](https://amrrs.github.io/devopedia_R4DS_workshop/presentation.html)
+### [Presentation Link - HTML](https://amrrs.github.io/r_beginners_workshop/presentation.html)
 
-### [Presentation PDF](https://github.com/amrrs/devopedia_R4DS_workshop/blob/master/presentation.pdf)
+### [Presentation PDF](https://github.com/amrrs/r_beginners_workshop/blob/master/presentation.pdf)
 
 # Re-Rendering the Presentation
 
 * Install [`xaringan`](https://github.com/yihui/xaringan) R package 
 * Open `presentation.Rmd` and `Knit` the Rmarkdown file
 * Rendered `presentation.html` would be saved in the project folder
+
