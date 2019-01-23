@@ -8,7 +8,7 @@
   * tidyverse - `install.packages('tidyverse')` (**Required**)
   * scales - `install.packages('scales')` 
   * ggthemes - `install.packages('ggthemes')` 
-* **Clone/Download** this Repo and Save it in your Local Machine
+* **Clone/Download** this Repo and Save it in your Local Machine (if it's a .zip file, please unzip and save it)
 
 <img src = images/github_repo_download.png width="70%">
 
