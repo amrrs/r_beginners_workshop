@@ -2,7 +2,6 @@
 title: "Intro to R for Data Science"
 subtitle: "Beginner's workshop"
 author: "AbdulMajedRaja RS"
-date: "2019/01/19 "
 output:
   xaringan::moon_reader:
     chakra: libs/remark-latest.min.js 
@@ -177,7 +176,7 @@ print("Hello, World!") #<<
 
 ```{r}
 5 * 9 -> a
-a2 + 3
+a + 3
 ```
 
 ---
@@ -555,6 +554,27 @@ if (iris$Sepal.Length>10) {print("hello")}
 ifelse(iris$Sepal.Length>6, "more_than_10","les_than_10")
 ```
 
+---
+
+# Functions
+
+## Types
+
+- Base-R functions (`mean()`, `plot()`, `lm()`)
+- Package functions (`dplyr::mutate()`, `stringr::str_detect()`)
+- User-defined functions 
+
+```{r}
+workshop_hate_message <- function(name = "No one", n = 3) {
+  text_to_print <- paste(name, "hate(s)", "this workshop")
+  for(i in 1:n) {
+    print(text_to_print)
+  }
+  
+}
+
+workshop_hate_message("All of us",4)
+```
 
 
 ---
