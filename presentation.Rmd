@@ -223,7 +223,7 @@ typeof(vector_of_numeric)
 ---
 
 ### Numeric Vector
-
+Each element of the numeric vector should be a number.
 ```{r}
 nummy <- c(2,3,4)
 
