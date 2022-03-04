@@ -2,8 +2,8 @@
 
 ## Instructions
 
-* **Download and Install [R](https://www.r-project.org/)**
-* **Download and Install [RStudio](https://www.rstudio.com/products/rstudio/download/)**
+* **Download and Install [R](https://cloud.r-project.org/)**
+* **Download and Install [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/)**
 * **Install the Following Packages**
   * tidyverse - `install.packages('tidyverse')` (**Required**)
   * scales - `install.packages('scales')` 
